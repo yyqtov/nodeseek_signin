@@ -77,7 +77,8 @@ for idx, cookie in enumerate(cookie_list):
         if response.status_code == 200:
             print(f"账号 {idx+1} 签到成功")
         else:
-            fail_message = f"NODESEEK账号 {idx+1} 签到失败，响应内容：{response.text}"
+            # 截断响应内容
+            fail_message = f"NODESEEK账号 {idx+1} 签到失败，响应内容：{response.text[:100]}" if len(response.text) > 100 else f"NODESEEK账号 {idx+1} 签到失败，响应内容：{response.text}"
             print(fail_message)
             # 失败时发送 Telegram 通知
             send_tg_notification(fail_message)
