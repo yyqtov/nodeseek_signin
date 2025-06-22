@@ -41,9 +41,9 @@
 
 #### 2. 运行脚本
 
-1. 安装`curl_cffi` 库。
+1. 安装`cloudscraper` 库和`requests` 库。
     ```bash
-    pip install curl_cffi
+    pip install cloudscraper requests
     ```
 
 2. 运行脚本：
