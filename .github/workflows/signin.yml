@@ -1,0 +1,29 @@
+name: NodeSeek Auto Signin
+
+on:
+  schedule:
+    - cron: '0 1 * * *'  # 每天北京时间09:00运行
+  workflow_dispatch:
+
+jobs:
+  signin:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run sign-in script
+        env:
+          NODESEEK_COOKIE: ${{ secrets.NODESEEK_COOKIE }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
+        run: python nodeseek_signin.py
