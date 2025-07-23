@@ -2,7 +2,7 @@ name: NodeSeek Auto Signin
 
 on:
   schedule:
-    - cron: '0 1 * * *'  # 每天北京时间09:00运行
+    - cron: '0 21 * * *'  # 每天北京时间09:00运行
   workflow_dispatch:
 
 jobs:
